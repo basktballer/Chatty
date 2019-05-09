@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
 import Message from './Message.jsx';
 
-class MessageList extends Component {
-  render() {
-    let messages = this.props.messages;
+function MessageList( {messages}) {
       let messagelist = messages.map(message => 
         <Message key={message.id} message={message} />
       );
@@ -15,7 +13,5 @@ class MessageList extends Component {
         </div>
       </main>
     );
-  }
-
 }
 export default MessageList;

@@ -81,15 +81,27 @@ export default class App extends Component {
 
   render() {
    return (
-      <div>
-        <nav className='navbar'>
-        <a href='/' className='navbar-brand'>Chatty</a>
-        <span className='navbar-connCount'>{this.state.activeConnections} users online</span>
-        </nav>
-        <MessageList messages={this.state.messages}/>
-        <ChatBar currentUserName={this.state.currentUserName} sendNewMessage={this.sendNewMessage} 
-          changeUsernameValue={this.changeUsernameValue}/>
-      </div>
+     <ChattyPresenter
+      activeConnections = {this.state.activeConnections}
+      messages = {this.state.messages}
+      currentUserName = {this.state.currentUserName}
+      sendNewMessage = {this.sendNewMessage}
+      changeUsernameValue = {this.changeUsernameValue}
+    />
         );
   }
+}
+
+const ChattyPresenter = props => {
+  return (
+    <div>
+      <nav className='navbar'>
+      <a href='/' className='navbar-brand'>Chatty</a>
+      <span className='navbar-connCount'>{props.activeConnections} users online</span>
+      </nav>
+      <MessageList messages={props.messages}/>
+      <ChatBar currentUserName={props.currentUserName} sendNewMessage={props.sendNewMessage} 
+        changeUsernameValue={props.changeUsernameValue}/>
+    </div>
+  );
 }
