@@ -60,11 +60,13 @@ img {
 
 .message-content {
   overflow-wrap: break-word;
+  width: 70%;
   flex: 8;
 }
 
 .message-username {
   overflow-wrap: break-word;
+  width: 20%;
   flex: 2;
   font-weight: 700;
 }
