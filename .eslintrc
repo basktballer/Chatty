@@ -1,8 +1,13 @@
 {
+  "parser": "babel-eslint",
   "parserOptions": {
     "sourceType": "module",
+    "allowImportExportEverywhere": false,
     "ecmaFeatures": {
-      "jsx": true
+      "globalReturn": false
+    },
+    "babelOptions": {
+      "configFile": "path/to/config.js"
     }
   },
   "env": {
@@ -18,6 +23,6 @@
   },
   "plugins": [
     "react"
-  ],
-  "extends": ["eslint:recommended", "plugin:react/recommended"]
+  ]
+
 }

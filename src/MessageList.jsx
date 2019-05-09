@@ -9,8 +9,8 @@ class MessageList extends Component {
       );
       
     return (
-      <main className="messages">      
-        <div className="messages">
+      <main className='messages'>      
+        <div className='messages'>
           {messagelist}
         </div>
       </main>

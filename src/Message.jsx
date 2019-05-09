@@ -5,9 +5,9 @@ class Message extends Component {
 
     if (this.props.message.username) {
       return (
-        <div className="message">
-          <span className="message-username" style={{color: this.props.message.color}}>{this.props.message.username}</span>
-          <span className="message-content">
+        <div className='message'>
+          <span className='message-username' style={{color: this.props.message.color}}>{this.props.message.username}</span>
+          <span className='message-content'>
 
             {(/\.(gif|jp?g|tiff|png)$/i).test(this.props.message.content) ?
               (<img src={this.props.message.content}/>) 
@@ -17,13 +17,13 @@ class Message extends Component {
 
           </span>
         </div>
-      ) 
+      );
     } else {
       return(
-        <div className="message system">
+        <div className='message system'>
           {this.props.message.content}
         </div>
-      )
+      );
     }
   }
 }
