@@ -63,5 +63,3 @@ npm start
 1. User login
 2. Improved handling of broken image URL
 3. Improved handling of very long username or messages
-
-### Known Issues
