@@ -35,6 +35,11 @@ npm install
 npm start
 ```
 
+#### App Instructions
+1. Hit enter in the username textbox to submit a username update. 
+2. Hit enter in the message textbox to submit a new message with specified username. 
+3. Paste an URL to an image file to send an image to the chat(.gif, .jpg, .jpeg, .tiff, .png) 
+
 ### Dependencies
 
 #### Client
@@ -63,3 +68,5 @@ npm start
 1. User login
 2. Improved handling of broken image URL
 3. Improved handling of very long username or messages
+4. Emoji support
+5. Gif keyboard support
