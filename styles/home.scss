@@ -9,6 +9,10 @@ body {
   margin: 70px 0;
 }
 
+img {
+  width: 60%
+}
+
 .chatbar {
   background: tomato;
   border-top: 1px solid black;
@@ -73,6 +77,9 @@ body {
   position: fixed;
   right: 0;
   top: 0;
+  display:flex;
+  align-items:baseline;
+  justify-content: space-between;
 }
 
 .navbar-brand {
@@ -85,4 +92,12 @@ body {
   line-height: 60px;
   padding: 0 10px;
   text-decoration: none;
+}
+
+.navbar-connCount {
+  color: inherit;
+  height: 60px;
+  align-self: flex-end;
+  display: inline-flex;
+  align-items: center;
 }
