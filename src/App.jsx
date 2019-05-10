@@ -9,9 +9,16 @@ export default class App extends Component {
     this.state = {
       messages: [],
       currentUserName: 'Anonymous', 
-      currentUserColor: '',
       activeConnections: 0
     };
+  }
+
+  scrollToBottom = () => {
+    this.messagesEnd.scrollIntoView({ behavior: "smooth" });
+  }
+    
+  componentDidUpdate() {
+    this.scrollToBottom();
   }
   
   componentDidMount = () => {
@@ -20,6 +27,7 @@ export default class App extends Component {
     this.socket.onopen = (event) => {
       console.log('Connected to server');
     };
+    this.scrollToBottom();
     this.socket.onmessage = (event) => {
       // code to handle incoming message
       let data = JSON.parse(event.data);
@@ -70,24 +78,38 @@ export default class App extends Component {
   }
 
   changeUsernameValue = (name) => {
-    let sliceName = name.slice(0, 40)
+    let sliceName = name.trim().slice(0, 40);
     const newNotificationItem = {
-      type: 'postNotification',      
-      content: `${this.state.currentUserName} has changed their name to ${sliceName}`
-    };
+      type: 'postNotification'
+    }    
+    if (sliceName === '') {
+      sliceName = 'Anonymous';
+      newNotificationItem.content= `${this.state.currentUserName} has changed their name to ${sliceName}`
+    } else if (sliceName === this.state.currentUserName) {      
+      newNotificationItem.content = `User name ${this.state.currentUserName} is unchanged`
+      
+    } else {
+      newNotificationItem.content= `${this.state.currentUserName} has changed their name to ${sliceName}`
+    }
     this.setState({currentUserName: sliceName });
     this.socket.send(JSON.stringify(newNotificationItem)); 
   }
 
   render() {
    return (
-     <ChattyPresenter
-      activeConnections = {this.state.activeConnections}
-      messages = {this.state.messages}
-      currentUserName = {this.state.currentUserName}
-      sendNewMessage = {this.sendNewMessage}
-      changeUsernameValue = {this.changeUsernameValue}
-    />
+     <div>
+      <ChattyPresenter
+        activeConnections = {this.state.activeConnections}
+        messages = {this.state.messages}
+        currentUserName = {this.state.currentUserName}
+        sendNewMessage = {this.sendNewMessage}
+        changeUsernameValue = {this.changeUsernameValue}
+        />
+      <div style={{ float:"left", clear: "both" }}
+        ref={(el) => { this.messagesEnd = el; }}>
+      </div>
+    </div>
+
         );
   }
 }
